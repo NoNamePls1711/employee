@@ -66,7 +66,7 @@ export default function Index({ employees, query }) {
                         <table className="w-full border-collapse border border-gray-200 shadow-xl rounded-lg overflow-hidden">
                             <thead className="bg-gradient-to-r from-pink-200 to-purple-200 text-indigo-800 font-semibold">
                                 <tr>
-                                    {['emp_no', 'first_name', 'last_name', 'gender',  'birthday'].map((col) => (
+                                    {['emp_no', 'first_name', 'last_name', 'gender',  'birthday','photo'].map((col) => (
                                         <th
                                             key={col}
                                             onClick={() => handleSort(col)}
@@ -94,6 +94,17 @@ export default function Index({ employees, query }) {
                                         <td className="border border-gray-300 px-4 py-3">{employee.gender === 'M' ? 'Male' : 'Female'}
                                         </td>
                                         <td className="border border-gray-300 px-4 py-3">{employee.birth_date}</td>
+                                        <td className="border border-gray-300 px-4 py-3">
+                                            {employee.photo ? (
+                                                <img
+                                                    src={`/storage/${employee.photo}`}
+                                                    alt="Employee"
+                                                    className="w-16 h-16 object-cover rounded-full"
+                                                />
+                                            ) : (
+                                                'No Image' // แสดงข้อความเมื่อไม่มีภาพ
+                                            )}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

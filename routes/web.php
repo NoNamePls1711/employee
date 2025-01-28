@@ -9,6 +9,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
 
+
+Route::get('/employee/create', [EmployeeController::class, 'create'])->middleware('auth')->name('employee.create');
+Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store');
 Route::get('/employee', [EmployeeController::class, 'index'])->middleware('auth')->name('employee.index'); 
 
 Route::get('/greeting', function () {
